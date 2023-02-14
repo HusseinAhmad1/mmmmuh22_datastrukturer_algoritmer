@@ -134,11 +134,29 @@ void Deck::put(Card card) {
     cards.push_back(card);
 }
 
+
 void Deck::insert(vector<Card> &cardlist, Card card) {
 
-    /**
-     * Your code here!
-    */
-
+    bool control_add = false;
+    
+    if (cardlist.size() == 0)
+    {
+        cardlist.push_back(card);
+        control_add = true;
+    }
+    else
+    {    
+        for (int i = 0; i < cardlist.size(); i++)
+        {
+            if (card > cardlist[i])
+                continue;
+            cardlist.insert(cardlist.begin() + i, card);
+            control_add = true;
+            break;
+        }
+    }
+        
+    if (!control_add)
+        cardlist.push_back(card);
     return;
 }
